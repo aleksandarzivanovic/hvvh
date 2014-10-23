@@ -166,6 +166,7 @@ var cachectrl = function (req, res, next) {
 	res.setHeader("Expires", new Date(Date.now() + 345600000).toUTCString());
 	res.setHeader('Cache-Control', 'max-age=3600');
 	res.setHeader('Content-Type', 'text/javascript');
+	console.log('ASDASDASDASDS', res);
 	next();
 };
 
