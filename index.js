@@ -149,6 +149,7 @@ var htaccess = function(req, res, next) {
 			break;
 		}
 	}
+	
 	req.url = url;
 	if (req.url.lastIndexOf('/') === req.url.length - 1) {
 		if (fs.existsSync(docroot + '/' + req.url + '/index.html')) {
