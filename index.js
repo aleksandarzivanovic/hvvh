@@ -171,8 +171,8 @@ app.use(compression());
 app.use(multipart());
 app.use(cookieParser());
 app.use(htaccess);
-app.use(phpcgi);
 app.use(express.static(docroot, {expires: (Date.now()*1000) + 86400000}));
 app.use(cachectrl);
+app.use(phpcgi);
 
 server.listen(argv.port || 8080);
