@@ -149,7 +149,7 @@ var htaccess = function(req, res, next) {
 			break;
 		}
 	}
-	
+
 	req.url = url;
 	if (req.url.lastIndexOf('/') === req.url.length - 1) {
 		if (fs.existsSync(docroot + '/' + req.url + '/index.html')) {
@@ -172,8 +172,8 @@ app.use(compression());
 app.use(multipart());
 app.use(cookieParser());
 app.use(htaccess);
-app.use(cachectrl);
 app.use(phpcgi);
+app.use(cachectrl);
 app.use(express.static(docroot, {'Expires': (Date.now()*1000) + 86400000}));
 
 server.listen(argv.port || 8080);
