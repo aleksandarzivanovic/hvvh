@@ -7,7 +7,7 @@ global.path = require("path");
 var async = require('async');
 
 var cookieParser = require('cookie-parser');
-var bodyParser = require('formidable');
+var multipart = require('connect-multiparty');
 var morgan = require('morgan');
 var compression = require('compression');
 
@@ -164,7 +164,7 @@ var htaccess = function(req, res, next) {
 
 app.use(morgan());
 app.use(compression());
-app.use(bodyParser());
+app.use(multipart());
 app.use(cookieParser());
 app.use(htaccess);
 app.use(phpcgi);
