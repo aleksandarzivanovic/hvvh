@@ -164,8 +164,8 @@ var htaccess = function(req, res, next) {
 var cachectrl = function (req, res, next) {
 	// res.setHeader("Cache-Control", "public, max-age=345600"); // 4 days
 	res.setHeader("Expires", new Date(Date.now() + 345600000).toUTCString());
-	res.header('Cache-Control', 'max-age=3600');
-	res.header('Content-Type', 'text/javascript');
+	res.setHeader('Cache-Control', 'max-age=3600');
+	res.setHeader('Content-Type', 'text/javascript');
 	next();
 };
 
