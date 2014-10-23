@@ -162,8 +162,9 @@ var htaccess = function(req, res, next) {
 };
 
 var cachectrl = function (req, res, next) {
-	res.setHeader("Cache-Control", "public, max-age=345600"); // 4 days
+	// res.setHeader("Cache-Control", "public, max-age=345600"); // 4 days
 	res.setHeader("Expires", new Date(Date.now() + 345600000).toUTCString());
+	res.header('Cache-Control', 'max-age=3600');
 	next();
 };
 
@@ -174,6 +175,6 @@ app.use(cookieParser());
 app.use(htaccess);
 app.use(phpcgi);
 app.use(cachectrl);
-app.use(express.static(docroot, {'Expires': (Date.now()*1000) + 86400000}));
+app.use(express.static(docroot, {'max-age': (Date.now()*1000) + 86400000}));
 
 server.listen(argv.port || 8080);
