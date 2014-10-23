@@ -22,9 +22,11 @@ var phpcgi = require('node-phpcgi')({
 
 
 var htaccess = function(req, res, next) {
-	res.setHeader("Cache-Control", "public, max-age=345600"); // 4 days
+
+	res.setHeader("Cache-Control", "public, max-age=345600, cache"); // 4 days
+	res.setHeader("Pragma", "cache, no-store");
     res.setHeader("Expires", new Date(Date.now() + 345600000).toUTCString());
-    
+
 	if (req.url === '/') {
 		if (fs.existsSync(docroot + '/index.php')) {
 			req.url = req.url + 'index.php';
